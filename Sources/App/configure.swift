@@ -23,6 +23,9 @@ public func configure(_ app: Application) throws {
   app.migrations.add(CreateMovieActor())
   app.migrations.add(AddPosterColumnToMovies())
   
+  if app.environment == .development {
+      try app.autoMigrate().wait()
+  }
   // register routes
   try routes(app)
 }
