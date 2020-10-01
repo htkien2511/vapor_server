@@ -1,11 +1,12 @@
 import Vapor
 
 func routes(_ app: Application) throws {
-    app.get { req in
-        return "It works!"
-    }
-
-    app.get("hello") { req -> String in
-        return "Hello, world!"
-    }
+  
+  let moviesController = MoviesController()
+  
+  // http://127.0.0.1:8080/movies POST
+  app.post("movies", use: moviesController.create)
+  
+  // http://127.0.0.1:8080/movies GET
+  app.get("movies", use: moviesController.all)
 }
