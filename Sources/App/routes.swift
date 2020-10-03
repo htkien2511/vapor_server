@@ -9,4 +9,7 @@ func routes(_ app: Application) throws {
   
   // http://127.0.0.1:8080/movies GET
   app.get("movies", use: moviesController.all)
+  
+  // http://127.0.0.1:8080/movies/:movieId DELETE
+  app.delete("movies", ":movieId", use: moviesController.delete)
 }
